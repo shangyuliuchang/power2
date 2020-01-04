@@ -72,6 +72,9 @@ int cap_ratio;
 int out_ratio;
 int testcnt=0;
 int testans;
+int I_tmp;
+int I;
+int I_ratio;
 /* USER CODE END 0 */
 
 /**
@@ -109,6 +112,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	pid_init(0,0.1f,0.0f,0.0f,0.0f,5.0f);
 	pid_init(1,0.1f,0.0f,0.0f,0.0f,5.0f);
+	pid_init(2,0.01f,0.0f,0.0f,0.0f,5.0f);
 	HAL_TIM_Base_Start_IT(&htim3);
 	HAL_ADC_Start_DMA(&hadc1,adcData,33);
 	HAL_Delay(500);

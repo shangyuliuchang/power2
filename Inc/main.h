@@ -69,6 +69,9 @@ extern int cap_ratio;
 extern int out_ratio;
 extern int testcnt;
 extern int testans;
+extern int I;
+extern int I_tmp;
+extern int I_ratio;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

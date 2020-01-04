@@ -11,7 +11,7 @@ void pid_init(uint8_t num, float kp, float ki, float kd, float limit_i, float li
 	pidUnits[num].total=0.0f;
 	pidUnits[num].init=1;
 }
-float pid_caculate(uint8_t num, float value_exp, float value_true){
+float pid_calculate(uint8_t num, float value_exp, float value_true){
 	pidUnits[num].error=value_exp-value_true;
 	if(pidUnits[num].init==1){
 		pidUnits[num].errror_p=pidUnits[num].error;

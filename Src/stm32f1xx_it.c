@@ -260,9 +260,15 @@ void TIM3_IRQHandler(void)
 	//		}
 			out_volt_tmp=adcData[1]+adcData[4]+adcData[7]+adcData[10]+adcData[13]+adcData[16]+adcData[19]+adcData[22]+adcData[25]+adcData[28]+adcData[31];
 			out_volt=out_volt_tmp/12;
-
-			cap_ratio=pid_caculate(0,2600.0f,cap_volt);
-			out_ratio=pid_caculate(1,2600.0f,out_volt);
+			
+			I_tmp=adcData[2]+adcData[5]+adcData[8]+adcData[11]+adcData[14]+adcData[17]+adcData[20]+adcData[23]+adcData[26]+adcData[29]+adcData[32];
+			
+			cap_ratio=pid_calculate(0,2600.0f,cap_volt);
+			out_ratio=pid_calculate(1,2600.0f,out_volt);
+			I_ratio=pid_calculate(2,4*2730,I_tmp);
+			if(I_ratio<cap_ratio){
+				cap_ratio=I_ratio;
+			}
 	//			
 	//		cap_ratio=pid_calculate_special(0,2600,cap_volt);
 	//		out_ratio=pid_calculate_special(1,2600,out_volt);
