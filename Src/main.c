@@ -75,6 +75,7 @@ int testans;
 int I_tmp;
 int I;
 int I_ratio;
+int begin=0;
 /* USER CODE END 0 */
 
 /**
@@ -117,6 +118,7 @@ int main(void)
 	HAL_ADC_Start_DMA(&hadc1,adcData,33);
 	HAL_Delay(500);
 	HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
+	begin=1;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -310,8 +312,8 @@ static void MX_DMA_Init(void)
 
   /* DMA interrupt init */
   /* DMA1_Channel1_IRQn interrupt configuration */
-//  HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 1, 0);
-//  HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+  //HAL_NVIC_SetPriority(DMA1_Channel1_IRQn, 1, 0);
+  //HAL_NVIC_EnableIRQ(DMA1_Channel1_IRQn);
 
 }
 

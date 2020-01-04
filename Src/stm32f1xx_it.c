@@ -251,9 +251,9 @@ void TIM3_IRQHandler(void)
 	//		}
 			cap_volt_tmp=adcData[0]+adcData[3]+adcData[6]+adcData[9]+adcData[12]+adcData[15]+adcData[18]+adcData[21]+adcData[24]+adcData[27]+adcData[30];
 			cap_volt=cap_volt_tmp/12;
-			if(cap_volt<1800){
-				emergency=1;
-			}
+			//if(cap_volt<1800){
+				//emergency=1;
+			//}
 	//		out_volt_tmp=0;
 	//		for(int i=0;i<11;i++){
 	//			out_volt_tmp+=adcData[i*3+1];
@@ -265,7 +265,7 @@ void TIM3_IRQHandler(void)
 			
 			cap_ratio=pid_calculate(0,2600.0f,cap_volt);
 			out_ratio=pid_calculate(1,2600.0f,out_volt);
-			I_ratio=pid_calculate(2,4*2730,I_tmp);
+			I_ratio=pid_calculate(2,4*2730,I_tmp); //I=4A;
 			if(I_ratio<cap_ratio){
 				cap_ratio=I_ratio;
 			}
