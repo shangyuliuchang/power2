@@ -1,0 +1,26 @@
+--cpu Cortex-M3
+"power2\startup_stm32f103xb.o"
+"power2\pid.o"
+"power2\main.o"
+"power2\stm32f1xx_it.o"
+"power2\stm32f1xx_hal_msp.o"
+"power2\stm32f1xx_hal_gpio_ex.o"
+"power2\stm32f1xx_hal_adc.o"
+"power2\stm32f1xx_hal_adc_ex.o"
+"power2\stm32f1xx_hal_tim.o"
+"power2\stm32f1xx_hal_tim_ex.o"
+"power2\stm32f1xx_hal.o"
+"power2\stm32f1xx_hal_rcc.o"
+"power2\stm32f1xx_hal_rcc_ex.o"
+"power2\stm32f1xx_hal_gpio.o"
+"power2\stm32f1xx_hal_dma.o"
+"power2\stm32f1xx_hal_cortex.o"
+"power2\stm32f1xx_hal_pwr.o"
+"power2\stm32f1xx_hal_flash.o"
+"power2\stm32f1xx_hal_flash_ex.o"
+"power2\stm32f1xx_hal_exti.o"
+"power2\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "power2\power2.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "power2.map" -o power2\power2.axf
