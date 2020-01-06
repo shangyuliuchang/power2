@@ -250,7 +250,8 @@ void TIM3_IRQHandler(void)
 	//			cap_volt_tmp+=adcData[i*3];
 	//		}
 			cap_volt_tmp=adcData[0]+adcData[3]+adcData[6]+adcData[9]+adcData[12]+adcData[15]+adcData[18]+adcData[21]+adcData[24]+adcData[27]+adcData[30];
-			cap_volt=cap_volt_tmp/12;
+			//cap_volt=cap_volt_tmp/12;
+			cap_ratio=243-(cap_volt_tmp>>7);//243->26V
 			//if(cap_volt<1800){
 				//emergency=1;
 			//}
@@ -259,28 +260,30 @@ void TIM3_IRQHandler(void)
 	//			out_volt_tmp+=adcData[i*3+1];
 	//		}
 			out_volt_tmp=adcData[1]+adcData[4]+adcData[7]+adcData[10]+adcData[13]+adcData[16]+adcData[19]+adcData[22]+adcData[25]+adcData[28]+adcData[31];
-			out_volt=out_volt_tmp/12;
+			//out_volt=out_volt_tmp/12;
+			out_ratio=243-(out_volt_tmp>>7);//243->26V
 			
 			I_tmp=adcData[2]+adcData[5]+adcData[8]+adcData[11]+adcData[14]+adcData[17]+adcData[20]+adcData[23]+adcData[26]+adcData[29]+adcData[32];
+			I_ratio=85-(I_tmp>>7);//85->4A
 //			
 //			cap_ratio=pid_calculate(0,2600.0f,cap_volt);
 //			out_ratio=pid_calculate(1,2600.0f,out_volt);
 //			I_ratio=pid_calculate(2,4*2730,I_tmp); //I=4A;
-			cap_ratio=(2600-cap_volt)/10;
+			//cap_ratio=(2600-cap_volt)/10;
 			if(cap_ratio<0){
 				cap_ratio=0;
 			}else if(cap_ratio>5){
 				cap_ratio=5;
 			}
 			
-			out_ratio=(2600-out_volt)/10;
+			//out_ratio=(2600-out_volt)/10;
 			if(out_ratio<0){
 				out_ratio=0;
 			}else if(out_ratio>5){
 				out_ratio=5;
 			}
 			
-			I_ratio=(10920-I_tmp)/100; //10920=2730*4=4A
+			//I_ratio=(10920-I_tmp)/100; //10920=2730*4=4A
 			if(I_ratio<0){
 				I_ratio=0;
 			}else if(I_ratio>5){
