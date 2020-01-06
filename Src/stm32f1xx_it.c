@@ -245,7 +245,7 @@ void TIM3_IRQHandler(void)
 		if(cnt==0){
 			turn=1-turn;
 			if(turn==0){
-				//		cap_volt_tmp=0;
+			//		cap_volt_tmp=0;
 	//		for(int i=0;i<11;i++){
 	//			cap_volt_tmp+=adcData[i*3];
 	//		}
