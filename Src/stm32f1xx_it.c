@@ -241,9 +241,8 @@ void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
 	if(emergency==0){
-		cnt=(cnt+1)%10;
 		if(cnt==0){
-			turn=1-turn;
+			//turn=1-turn;
 			if(turn==0){
 				//		cap_volt_tmp=0;
 	//		for(int i=0;i<11;i++){
@@ -298,7 +297,6 @@ void TIM3_IRQHandler(void)
 	//		out_ratio=pid_calculate_special(1,2600,out_volt);
 			}
 		}
-		
 		if(CHARGE && cap_ratio>cnt){
 			if(turn==0){
 				CAP_A_HIGH;
@@ -322,6 +320,10 @@ void TIM3_IRQHandler(void)
 		}else{
 			OUT_A_LOW;
 			OUT_B_LOW;
+		}
+		turn=1-turn;
+		if(turn==0){
+			cnt=(cnt+1)%10;
 		}
 	}else{
 		CAP_A_LOW;
