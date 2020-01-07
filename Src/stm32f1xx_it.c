@@ -321,10 +321,12 @@ void TIM3_IRQHandler(void)
 			OUT_A_LOW;
 			OUT_B_LOW;
 		}
+		
 		turn=1-turn;
 		if(turn==0){
 			cnt=(cnt+1)%10;
 		}
+		
 	}else{
 		CAP_A_LOW;
 		CAP_B_LOW;
