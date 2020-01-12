@@ -74,6 +74,7 @@
 #define UP 1
 
 int cnt=0;
+int counter=0;
 int turn=0;
 int emergency=0;
 /* USER CODE END 0 */
@@ -299,8 +300,8 @@ void TIM3_IRQHandler(void)
 		}
 		if(CHARGE && cap_ratio>cnt){
 			if(turn==0){
-				CAP_A_HIGH;
 				CAP_B_LOW;
+				CAP_A_HIGH;
 			}else{
 				CAP_A_LOW;
 				CAP_B_HIGH;
@@ -311,8 +312,8 @@ void TIM3_IRQHandler(void)
 		}
 		if(UP && out_ratio>cnt){
 			if(turn==0){
-				OUT_A_HIGH;
 				OUT_B_LOW;
+				OUT_A_HIGH;
 			}else{
 				OUT_A_LOW;
 				OUT_B_HIGH;
@@ -322,9 +323,12 @@ void TIM3_IRQHandler(void)
 			OUT_B_LOW;
 		}
 		
-		turn=1-turn;
-		if(turn==0){
-			cnt=(cnt+1)%10;
+		counter=(counter+1)%40;
+		turn=(counter>>1)%2;
+		if(counter%2==0){
+			cnt=counter>>2;
+		}else{
+			cnt=10;
 		}
 		
 	}else{
